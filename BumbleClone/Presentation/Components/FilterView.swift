@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     let options: [String]
-    @State var selectedOption: String = "Everyone"
+    @Binding var selectedOption: String
     @Namespace private var underlineNamespace
     
     var body: some View {
@@ -20,6 +20,8 @@ struct FilterView: View {
                         Text(option)
                             .frame(maxWidth: .infinity)
                             .padding(.bottom, 10)
+                        
+                        Divider()
                         
                         if selectedOption == option {
                             Rectangle()
@@ -44,7 +46,7 @@ struct FilterView: View {
 
 #Preview {
     FilterView(
-        options: ["Everyone", "Trending"]
-//        selectedOption: .constant("Everyone")
+        options: ["Everyone", "Trending"],
+        selectedOption: .constant("Everyone")
     )
 }

@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
+    private let filters: [String] = ["Everyone", "Trending"]
+    @AppStorage("home_filter") private var selectedFilter = "Everyone"
+    
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             toolbar
+            FilterView(options: filters, selectedOption: $selectedFilter)
             
             Spacer()
         }
+        .padding(.horizontal)
         .background(Color.bumbleWhite)
     }
 }
